@@ -1,0 +1,11 @@
+#resultType {
+margin-left: 92px;
+}
+
+#input:not(:placeholder-shown) {
+    border-color: revert;
+}
+
+#input:placeholder-shown {
+    border-color: #ff0000a1;
+}

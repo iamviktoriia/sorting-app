@@ -1,0 +1,74 @@
+[
+      {
+        "unit": "m",
+        "convert_to": "ft",
+        "index": "3.2808",
+        "operation": "multiply"
+      },
+      {
+        "unit": "m",
+        "convert_to": "cm",
+        "index": 0.01,
+        "operation": "divide"
+      },
+      {
+        "unit": "m",
+        "convert_to": "in",
+        "index": 39.370,
+        "operation": "multiply"
+      },
+      {
+        "unit": "cm",
+        "convert_to": "ft",
+        "index": 0.032808,
+        "operation": "multiply"
+      },
+      {
+        "unit": "cm",
+        "convert_to": "m",
+        "index": 100,
+        "operation": "divide"
+      },
+      {
+        "unit": "cm",
+        "convert_to": "in",
+        "index": 0.39370,
+        "operation": "multiply"
+      },
+      {
+        "unit": "in",
+        "convert_to": "ft",
+        "index": 0.083333,
+        "operation": "multiply"
+      },
+      {
+        "unit": "in",
+        "convert_to": "m",
+        "index": 39.370,
+        "operation": "divide"
+      },
+      {
+        "unit": "in",
+        "convert_to": "cm",
+        "index": 0.39370,
+        "operation": "divide"
+      },
+      {
+        "unit": "ft",
+        "convert_to": "m",
+        "index": 3.2808,
+        "operation": "divide"
+      },
+      {
+        "unit": "ft",
+        "convert_to": "cm",
+        "index": 0.032808,
+        "operation": "divide"
+      },
+      {
+        "unit": "ft",
+        "convert_to": "in",
+        "index": 12,
+        "operation": "multiply"
+      }
+]
