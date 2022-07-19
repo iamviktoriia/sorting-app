@@ -13,23 +13,20 @@
 Array.prototype.sortBy = function(fieldName) {
     return this.sort((a, b) => {
         if (typeof a[fieldName] === 'string') {
-            console.log('string');
             return a[fieldName].localeCompare(b[fieldName]);
 
         }
 
-        console.log('number');
         return a[fieldName] - b[fieldName]
     });
 };
 
 Array.prototype.include = function(fieldName, value) {
-    console.log('this', this);
-    return this.filter((el) => el[fieldName]=== value);
+    return this.filter((el) => el[fieldName] === value);
 };
 
-Array.prototype.exclude = function (disabled) {
-    return this.filter((el) => el.disabled === disabled);
+Array.prototype.exclude = function (fieldName, value) {
+    return this.filter((el) => el[fieldName] !== value);
 }
 
 async function getData() {
@@ -41,31 +38,41 @@ getData().then((data) => {
       let checkedData = data;
 
       const condition = {
-          include: [{name: 'John'}],
-          sort_by: ['rating']
+          include: [{ name: 'John' }, { name: 'Mike' }],
+          sortBy: ['rating'],
+          exclude: [{ name: 'John'}]
       };
-      if (condition.sort_by) {
-          condition.sort_by.forEach((item) => {
-              console.log('item', item);
-              checkedData = checkedData.sortBy(item);
-          })
-      }
 
-      if (condition.include) {
-          condition.include.forEach((item) => {
-              // console.log('item', item);
-              // console.log('fieldName', Object.keys(item)[0]);
-              // console.log('item.value', item[Object.keys(item)[0]]);
-              checkedData = checkedData.include(Object.keys(item)[0], item[Object.keys(item)[0]]);
-          })
-
-      }
-
-      if (condition.exclude) {
-          checkedData = checkedData.exclude('John');
-      }
-
-    console.log('checkedData', checkedData);
+        Object.keys(condition).forEach((conditionRule) => {
+            let tempData = [];
+            condition[conditionRule].forEach((item) => {
+                console.log('typeof item', typeof item)
+                if (typeof item === 'string') {
+                    checkedData = checkedData[conditionRule](item);
+                } else {
+                    checkedData = checkedData[conditionRule](Object.keys(item)[0], item[Object.keys(item)[0]]);
+                }
+            });
+            checkedData = tempData;
+        })
+        console.log('checkedData', JSON.stringify(checkedData));
+      // if (condition.sortBy) {
+      //     condition.sort_by.forEach((item) => {
+      //         checkedData = checkedData.sortBy(item);
+      //     })
+      // }
+      //
+      // if (condition.include) {
+      //     condition.include.forEach((item) => {
+      //         checkedData = checkedData.include(Object.keys(item)[0], item[Object.keys(item)[0]]);
+      //     })
+      // }
+      //
+      // if (condition.exclude) {
+      //   condition.exclude.forEach((item) => {
+      //       checkedData = checkedData.exclude(Object.keys(item)[0], item[Object.keys(item)[0]]);
+      //   })
+      // }
 }
 );
 
